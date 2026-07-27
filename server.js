@@ -21,7 +21,10 @@ app.post('/api/generate-cover', async (req, res) => {
     res.json(cover);
   } catch (err) {
     console.error(err);
-    res.status(502).json({ error: 'Error generando la imagen.' });
+    const message = err.status === 429
+      ? 'El servicio de generación está saturado ahora mismo. Probá de nuevo en unos segundos.'
+      : 'Error generando la imagen.';
+    res.status(502).json({ error: message });
   }
 });
 

@@ -1,6 +1,6 @@
 import { validateAlbumName, fetchCoverImage } from '../lib/coverPrompt.js';
 
-export const config = { maxDuration: 30 };
+export const config = { maxDuration: 45 };
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -21,6 +21,9 @@ export default async function handler(req, res) {
     res.status(200).json(cover);
   } catch (err) {
     console.error(err);
-    res.status(502).json({ error: 'Error generando la imagen.' });
+    const message = err.status === 429
+      ? 'El servicio de generación está saturado ahora mismo. Probá de nuevo en unos segundos.'
+      : 'Error generando la imagen.';
+    res.status(502).json({ error: message });
   }
 }
