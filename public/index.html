@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generador de Tapas de Álbum</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Generador de Tapas de Álbum</h1>
+    <p class="subtitle">Escribí el nombre de tu álbum y generá una tapa con IA.</p>
+
+    <form id="cover-form" class="form">
+      <input
+        id="album-name"
+        type="text"
+        placeholder="Nombre del álbum"
+        maxlength="200"
+        required
+      />
+      <select id="genre-select">
+        <option value="">Género / estilo (opcional)</option>
+        <option value="rock">Rock</option>
+        <option value="metal">Metal</option>
+        <option value="electronic">Electrónica</option>
+        <option value="hiphop">Hip-Hop / Rap</option>
+        <option value="pop">Pop</option>
+        <option value="jazz">Jazz</option>
+        <option value="classical">Clásica</option>
+        <option value="reggae">Reggae</option>
+        <option value="folk">Folk / Acústico</option>
+        <option value="ambient">Ambient / Chill</option>
+        <option value="punk">Punk</option>
+        <option value="latin">Latina</option>
+      </select>
+      <button type="submit" id="generate-btn">Generar tapa</button>
+    </form>
+
+    <div id="status" class="status" hidden></div>
+
+    <div id="result" class="result" hidden>
+      <img id="cover-image" alt="Tapa de álbum generada" />
+      <a id="download-link" download="tapa-album.png" class="download-btn">Descargar imagen</a>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
